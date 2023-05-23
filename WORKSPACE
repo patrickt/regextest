@@ -33,6 +33,16 @@ http_archive(
     # sha256 = "0b8e7465dc5e98c757cc3650a20a7843ee4c3edf50aaf60bb33fd879690d2c73",
 )
 
+http_archive(
+    name = "pcre2",
+    build_file_content = _ALL_CONTENT,
+    strip_prefix = "pcre2-10.42",
+    urls = [
+        "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz"
+    ],
+    sha256 = "c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f",
+)
+
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 http_archive(

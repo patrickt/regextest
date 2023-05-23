@@ -10,9 +10,19 @@ configure_make(
     env = {"AR": "ar"}
 )
 
+configure_make(
+    name = "pcre2",
+    lib_source = "@pcre2//:all_srcs",
+    configure_in_place = True,
+    configure_options = ["--enable-shared=no", "--enable-static=yes", "--enable-pcre2-8"],
+    visibility = ["//visibility:public"],
+    out_static_libs = ["libpcre2-8.a", "libpcre2-posix.a"],
+    env = {"AR": "ar"},
+)
+
 cc_binary(
     name = "regextest",
-    deps = ["libonigmo"],
+    deps = ["libonigmo", "pcre2"],
     srcs = ["main.c"],
     args = ["-funsigned-char"]
 )
